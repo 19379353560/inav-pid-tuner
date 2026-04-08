@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>INAV PID Tuner</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body { font-family: sans-serif; max-width: 900px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #333; }
+    #drop-zone { border: 2px dashed #aaa; padding: 40px; text-align: center; cursor: pointer; border-radius: 8px; }
+    #drop-zone.dragover { background: #f0f8ff; border-color: #007bff; }
+    .card { background: #f9f9f9; border-left: 4px solid #007bff; padding: 12px 16px; margin: 8px 0; border-radius: 4px; }
+    .card.warning { border-color: #ff9800; }
+    #cli-box { width: 100%; height: 160px; font-family: monospace; font-size: 13px; }
+    #copy-btn { margin-top: 8px; padding: 8px 20px; cursor: pointer; }
+    #status { color: #666; margin: 12px 0; }
+    canvas { max-height: 260px; }
+  </style>
+</head>
+<body>
+  <h1>INAV PID Tuner</h1>
+  <div id="drop-zone">
+    <p>拖拽 .bbl 文件到这里，或点击选择文件</p>
+    <input type="file" id="file-input" accept=".bbl,.bfl" style="display:none">
+  </div>
+  <div id="status"></div>
+  <div id="results" style="display:none">
+    <h2>分析结果</h2>
+    <canvas id="chart"></canvas>
+    <h2>调参建议</h2>
+    <div id="recommendations"></div>
+    <h2>CLI 命令</h2>
+    <textarea id="cli-box" readonly></textarea><br>
+    <button id="copy-btn">复制 CLI 命令</button>
+  </div>
+
+  <script>
+    const dropZone = document.getElementById('drop-zone');
+    const fileInput = document.getElementById('file-input');
+    const status = document.getElementById('status');
+    let chartInstance = null;
+
+    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.addEventListener('dragover', e => { e.preventDefault(); dropZone.classList.add('dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', e => { e.preventDefault(); dropZone.classList.remove('dragover'); handleFile(e.dataTransfer.files[0]); });
+    fileInput.addEventListener('change', e => handleFile(e.target.files[0]));
+
+    async function handleFile(file) {
+      if (!file) return;
+      status.textContent = '分析中...';
+      const form = new FormData();
+      form.append('file', file);
+      try {
+        const res = await fetch('/analyze', { method: 'POST', body: form });
+        if (!res.ok) { const e = await res.json(); throw new Error(e.detail); }
+        const data = await res.json();
+        renderResults(data);
+      } catch (e) {
+        status.textContent = '错误: ' + e.message;
+      }
+    }
+
+    function renderResults(data) {
+      status.textContent = '分析完成';
+      document.getElementById('results').style.display = 'block';
+
+      const m = data.metrics;
+      const labels = ['Roll', 'Pitch', 'Yaw'];
+      const pData = [m.p_error_rms.roll, m.p_error_rms.pitch, m.p_error_rms.yaw];
+      const dData = [m.d_noise_rms.roll, m.d_noise_rms.pitch, 0];
+
+      if (chartInstance) chartInstance.destroy();
+      chartInstance = new Chart(document.getElementById('chart'), {
+        type: 'bar',
+        data: {
+          labels,
+          datasets: [
+            { label: 'P Error RMS', data: pData, backgroundColor: 'rgba(0,123,255,0.6)' },
+            { label: 'D Noise RMS', data: dData, backgroundColor: 'rgba(255,99,132,0.6)' },
+          ]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+
+      const recDiv = document.getElementById('recommendations');
+      recDiv.innerHTML = '';
+      if (data.recommendations.length === 0) {
+        recDiv.innerHTML = '<div class="card">飞行数据看起来不错，暂无调参建议。</div>';
+      } else {
+        data.recommendations.forEach(r => {
+          const div = document.createElement('div');
+          div.className = 'card warning';
+          div.innerHTML = `<strong>${r.axis} / ${r.param}</strong>：${r.action === 'increase' ? '建议增大' : '建议减小'} ${r.pct}%<br><small>${r.reason}</small>`;
+          recDiv.appendChild(div);
+        });
+      }
+
+      document.getElementById('cli-box').value = data.cli_commands;
+    }
+
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      const box = document.getElementById('cli-box');
+      box.select();
+      document.execCommand('copy');
+      document.getElementById('copy-btn').textContent = '已复制!';
+      setTimeout(() => document.getElementById('copy-btn').textContent = '复制 CLI 命令', 2000);
+    });
+  </script>
+</body>
+</html>
