@@ -15,7 +15,7 @@ metrics, then copy the suggested CLI changes into INAV Configurator.
 
 See [PROJECT_STATUS.md](PROJECT_STATUS.md) for validation notes. Blackbox logs,
 rule suggestions, and tuning feedback are welcome through
-[GitHub issues](https://github.com/19379353560/inav-pid-tuner/issues/new/choose).
+[the current Blackbox-log request](https://github.com/19379353560/inav-pid-tuner/issues/1).
 
 ## What It Does
 
@@ -108,3 +108,5 @@ Useful feedback includes:
 - Example INAV Blackbox logs from different airframes.
 - Better tuning rules for fixed wing, 5-inch freestyle, and long-range builds.
 - UI improvements that make the recommendations easier to review safely.
+
+Start here: [INAV Blackbox log request](https://github.com/19379353560/inav-pid-tuner/issues/1).
