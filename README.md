@@ -1,5 +1,10 @@
 # INAV PID Tuner
 
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-web%20tool-009688)](https://fastapi.tiangolo.com/)
+[![Stars](https://img.shields.io/github/stars/19379353560/inav-pid-tuner?style=social)](https://github.com/19379353560/inav-pid-tuner/stargazers)
+[![Last commit](https://img.shields.io/github/last-commit/19379353560/inav-pid-tuner)](https://github.com/19379353560/inav-pid-tuner/commits/master)
+
 Analyze INAV Blackbox logs and generate practical PID/filter tuning suggestions.
 
 This is a small FastAPI web tool for FPV builders who tune INAV aircraft from
@@ -89,3 +94,11 @@ Upload a `.bbl` or `.bfl` file as multipart form data under the `file` field.
 - [INAV firmware experiments](https://github.com/19379353560/inav)
 - [SkyPilot H743 flight controller](https://github.com/19379353560/skypilot)
 - [INAV Blackbox tools](https://github.com/iNavFlight/blackbox-tools)
+
+## Feedback Wanted
+
+Useful feedback includes:
+
+- Example INAV Blackbox logs from different airframes.
+- Better tuning rules for fixed wing, 5-inch freestyle, and long-range builds.
+- UI improvements that make the recommendations easier to review safely.
