@@ -113,3 +113,6 @@ Useful feedback includes:
 
 Start here: [INAV Blackbox log request](https://github.com/19379353560/inav-pid-tuner/issues/1)
 or [discussion](https://github.com/19379353560/inav-pid-tuner/discussions/2).
+
+See [ROADMAP.md](ROADMAP.md) for the current validation, analysis, and product
+plan.
