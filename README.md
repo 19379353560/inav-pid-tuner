@@ -111,4 +111,5 @@ Useful feedback includes:
 - Better tuning rules for fixed wing, 5-inch freestyle, and long-range builds.
 - UI improvements that make the recommendations easier to review safely.
 
-Start here: [INAV Blackbox log request](https://github.com/19379353560/inav-pid-tuner/issues/1).
+Start here: [INAV Blackbox log request](https://github.com/19379353560/inav-pid-tuner/issues/1)
+or [discussion](https://github.com/19379353560/inav-pid-tuner/discussions/2).

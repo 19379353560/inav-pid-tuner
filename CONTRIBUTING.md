@@ -20,5 +20,7 @@ you are unsure, open an issue with screenshots or summary metrics first.
 
 - Main Blackbox-log request:
   https://github.com/19379353560/inav-pid-tuner/issues/1
+- Discussion:
+  https://github.com/19379353560/inav-pid-tuner/discussions/2
 - New issue templates:
   https://github.com/19379353560/inav-pid-tuner/issues/new/choose
