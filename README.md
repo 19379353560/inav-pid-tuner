@@ -13,6 +13,10 @@ This is a small FastAPI web tool for FPV builders who tune INAV aircraft from
 real flight data. Upload a `.bbl` or `.bfl` Blackbox log, review the extracted
 metrics, then copy the suggested CLI changes into INAV Configurator.
 
+See [PROJECT_STATUS.md](PROJECT_STATUS.md) for validation notes. Blackbox logs,
+rule suggestions, and tuning feedback are welcome through
+[GitHub issues](https://github.com/19379353560/inav-pid-tuner/issues/new/choose).
+
 ## What It Does
 
 - Accepts INAV Blackbox logs in `.bbl` and `.bfl` format.
