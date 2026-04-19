@@ -1,5 +1,7 @@
 # INAV PID Tuner
 
+![INAV PID Tuner banner](assets/cover.svg)
+
 [![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-web%20tool-009688)](https://fastapi.tiangolo.com/)
 [![Stars](https://img.shields.io/github/stars/19379353560/inav-pid-tuner?style=social)](https://github.com/19379353560/inav-pid-tuner/stargazers)
