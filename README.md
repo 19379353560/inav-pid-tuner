@@ -7,6 +7,7 @@
 [![Stars](https://img.shields.io/github/stars/19379353560/inav-pid-tuner?style=social)](https://github.com/19379353560/inav-pid-tuner/stargazers)
 [![Last commit](https://img.shields.io/github/last-commit/19379353560/inav-pid-tuner)](https://github.com/19379353560/inav-pid-tuner/commits/master)
 [![Review snapshot](https://img.shields.io/github/v/release/19379353560/inav-pid-tuner?include_prereleases&label=review%20snapshot)](https://github.com/19379353560/inav-pid-tuner/releases/tag/review-2026-04-19)
+[![Contribute](https://img.shields.io/badge/contribute-good%20first%20issues-b91c1c)](https://19379353560.github.io/contribute.html)
 
 Analyze INAV Blackbox logs and generate practical PID/filter tuning suggestions.
 
@@ -113,6 +114,8 @@ Useful feedback includes:
 
 Start here: [INAV Blackbox log request](https://github.com/19379353560/inav-pid-tuner/issues/1)
 or [discussion](https://github.com/19379353560/inav-pid-tuner/discussions/2).
+
+Good first issues and review paths: https://19379353560.github.io/contribute.html.
 
 See [ROADMAP.md](ROADMAP.md) for the current validation, analysis, and product
 plan.
