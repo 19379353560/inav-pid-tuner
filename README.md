@@ -118,3 +118,5 @@ See [ROADMAP.md](ROADMAP.md) for the current validation, analysis, and product
 plan.
 
 Related guide: [INAV Blackbox log sharing guide](https://19379353560.github.io/blackbox-log-sharing.html).
+
+Safety notes: [SAFETY.md](SAFETY.md).
