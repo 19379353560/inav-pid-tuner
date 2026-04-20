@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: INAV Blackbox log request
+    url: https://github.com/19379353560/inav-pid-tuner/issues/1
+    about: Main thread for anonymized logs and validation data.
+  - name: Blackbox log sharing guide
+    url: https://19379353560.github.io/blackbox-log-sharing.html
+    about: Use this guide before sharing logs publicly.
+  - name: Discussion
+    url: https://github.com/19379353560/inav-pid-tuner/discussions/2
+    about: Ask lightweight questions before opening a focused issue.
